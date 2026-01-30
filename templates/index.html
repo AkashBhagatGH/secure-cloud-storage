@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Secure Cloud Storage</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          animation: {
+            float: 'float 6s ease-in-out infinite',
+            glow: 'glow 3s ease-in-out infinite'
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' }
+            },
+            glow: {
+              '0%, 100%': { boxShadow: '0 0 20px rgba(99,102,241,0.35)' },
+              '50%': { boxShadow: '0 0 35px rgba(99,102,241,0.6)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Professional cursor: subtle highlight only */
+    .cursor-highlight {
+      position: fixed;
+      width: 24px;
+      height: 24px;
+      border-radius: 9999px;
+      background: rgba(99,102,241,0.18);
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      transition: width 0.15s ease, height 0.15s ease, background 0.15s ease;
+    }
+
+    button:hover ~ .cursor-highlight,
+    label:hover ~ .cursor-highlight {
+      width: 36px;
+      height: 36px;
+      background: rgba(99,102,241,0.25);
+    }
+  </style>
+</head>
+
+<body class="min-h-screen bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-indigo-950 via-slate-900 to-black text-white flex items-center justify-center overflow-hidden">
+
+  <!-- subtle cursor highlight -->
+  <div id="cursor" class="cursor-highlight"></div>
+
+  <!-- background orbs -->
+  <div class="absolute w-96 h-96 bg-indigo-600/25 rounded-full blur-3xl top-10 left-10 animate-float"></div>
+  <div class="absolute w-96 h-96 bg-purple-600/20 rounded-full blur-3xl bottom-10 right-10 animate-float"></div>
+
+  <!-- main card -->
+  <div class="relative z-20 w-full max-w-xl bg-white/10 backdrop-blur-2xl rounded-3xl shadow-2xl p-10 border border-white/15 animate-glow">
+    
+    <h1 class="text-4xl font-extrabold text-center mb-3 tracking-wide">🔐 Secure Cloud Storage</h1>
+    <p class="text-center text-slate-300 mb-8">Enterprise-grade file encryption • Backend-first architecture</p>
+
+    <form method="POST" enctype="multipart/form-data" class="space-y-8">
+      <div class="relative border-2 border-dashed border-indigo-400/40 rounded-2xl p-10 text-center hover:border-indigo-400 transition">
+        <input type="file" name="file" id="file" class="hidden" required />
+        <label for="file" class="cursor-pointer">
+          <p class="text-xl font-semibold hover:text-indigo-300 transition">📁 Select a file to upload</p>
+          <p class="text-sm text-slate-400 mt-2">Encrypted before storage • No plaintext retained</p>
+        </label>
+      </div>
+
+      <button type="submit" class="w-full py-4 rounded-2xl bg-indigo-600 hover:bg-indigo-700 transition font-semibold text-lg tracking-wide">
+        Upload & Encrypt
+      </button>
+    </form>
+
+    <div class="mt-10 grid grid-cols-3 gap-4 text-center text-sm">
+      <div class="bg-white/5 rounded-xl p-3">🔑 AES Encryption</div>
+      <div class="bg-white/5 rounded-xl p-3">⚡ Flask Backend</div>
+      <div class="bg-white/5 rounded-xl p-3">☁️ Cloud Ready</div>
+    </div>
+
+    <p class="mt-8 text-xs text-center text-slate-400">Minimal • Secure • Professional</p>
+  </div>
+
+  <script>
+    const cursor = document.getElementById('cursor');
+
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+  </script>
+
+</body>
+</html>
