@@ -67,7 +67,7 @@ AWS S3 → Download encrypted file → Decrypt locally → Send to user → Clea
 ## 🛠️ Tech Stack
 
 | Category     | Technology                  |
-|--------------|-----------------------------|
+|--------------|-----------------------------||
 | Backend      | Python, Flask               |
 | Cloud        | AWS S3, IAM                 |
 | Security     | Cryptography (Fernet)       |
